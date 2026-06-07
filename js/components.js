@@ -18,11 +18,12 @@ const NAV_HTML = `
   </div>
 </nav>
 <div class="mobile-menu">
-  <a href="index.html">Home</a>
-  <a href="species.html">Species Directory</a>
-  <a href="news.html">Conservation News</a>
-  <a href="get-involved.html">Get Involved</a>
-  <a href="about.html">About</a>
+  <a href="index.html">🏠 Home</a>
+  <a href="species.html">🐾 Species Directory</a>
+  <a href="news.html">📰 Conservation News</a>
+  <a href="get-involved.html">🤝 Get Involved</a>
+  <a href="about.html">ℹ️ About</a>
+  <a href="get-involved.html" class="mobile-cta">🌿 Take Action Now</a>
 </div>`;
 
 const FOOTER_HTML = `

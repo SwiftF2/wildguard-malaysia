@@ -8,15 +8,31 @@ window.addEventListener('scroll', () => {
 // ── MOBILE MENU ───────────────────────────────────────────────────────────
 const mobileBtn  = document.querySelector('.nav-mobile-btn');
 const mobileMenu = document.querySelector('.mobile-menu');
-mobileBtn?.addEventListener('click', () => {
-  mobileMenu?.classList.toggle('open');
-  mobileBtn.textContent = mobileMenu?.classList.contains('open') ? '✕' : '☰';
+let menuOpen = false;
+
+mobileBtn?.addEventListener('click', (e) => {
+  e.stopPropagation();
+  menuOpen = !menuOpen;
+  mobileMenu?.classList.toggle('open', menuOpen);
+  mobileBtn.textContent = menuOpen ? '✕' : '☰';
+  mobileBtn.setAttribute('aria-expanded', menuOpen);
 });
+
 document.addEventListener('click', (e) => {
-  if (!navbar?.contains(e.target) && !mobileMenu?.contains(e.target)) {
+  if (menuOpen && !navbar?.contains(e.target) && !mobileMenu?.contains(e.target)) {
+    menuOpen = false;
     mobileMenu?.classList.remove('open');
-    if (mobileBtn) mobileBtn.textContent = '☰';
+    if (mobileBtn) { mobileBtn.textContent = '☰'; mobileBtn.setAttribute('aria-expanded', false); }
   }
+});
+
+// Close menu when a link is clicked
+mobileMenu?.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    menuOpen = false;
+    mobileMenu?.classList.remove('open');
+    if (mobileBtn) { mobileBtn.textContent = '☰'; mobileBtn.setAttribute('aria-expanded', false); }
+  });
 });
 
 // ── ACTIVE NAV LINK ───────────────────────────────────────────────────────
