@@ -2,9 +2,18 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/species", "destination": "/species.html" },
-    { "source": "/news", "destination": "/news.html" },
-    { "source": "/get-involved", "destination": "/get-involved.html" },
-    { "source": "/about", "destination": "/about.html" }
+    { "source": "/species",    "destination": "/species.html" },
+    { "source": "/news",       "destination": "/news.html" },
+    { "source": "/get-involved","destination": "/get-involved.html" },
+    { "source": "/about",      "destination": "/about.html" },
+    { "source": "/tiger",      "destination": "/tiger.html" },
+    { "source": "/rhino",      "destination": "/rhino.html" },
+    { "source": "/elephant",   "destination": "/elephant.html" },
+    { "source": "/monkey",     "destination": "/monkey.html" },
+    { "source": "/tapir",      "destination": "/tapir.html" },
+    { "source": "/sunbear",    "destination": "/sunbear.html" },
+    { "source": "/pangolin",   "destination": "/pangolin.html" },
+    { "source": "/orangutan",  "destination": "/orangutan.html" },
+    { "source": "/hornbill",   "destination": "/hornbill.html" }
   ]
 }
