@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Species Directory — WildGuard Malaysia</title>
+  <meta name="description" content="Explore profiles of Malaysia's most endangered wildlife species, from the Malayan Tiger to the Proboscis Monkey." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .species-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.75rem; }
+    @media(max-width:900px){ .species-grid{ grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:500px){ .species-grid{ grid-template-columns: 1fr; } }
+    .search-bar { position: relative; max-width: 400px; }
+    .search-bar input { width:100%; padding:.7rem 1rem .7rem 2.75rem; border-radius:var(--radius-sm); border:1.5px solid var(--gray-200); font-size:.95rem; color:var(--text-dark); transition:var(--transition); background:var(--off-white); }
+    .search-bar input:focus { outline:none; border-color:var(--green-mid); background:var(--white); }
+    .search-bar::before { content:'🔍'; position:absolute; left:.9rem; top:50%; transform:translateY(-50%); font-size:.95rem; pointer-events:none; }
+    .filter-row { display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; margin-bottom:2rem; }
+  </style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<!-- ── PAGE HERO ──────────────────────────────────────────────────────────── -->
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span> Species Directory</div>
+    <span class="section-label">Wildlife of Malaysia</span>
+    <h1>Species Directory</h1>
+    <p>Discover Malaysia's endangered wildlife — learn their stories, understand the threats they face, and find out how you can help protect them.</p>
+  </div>
+</section>
+
+<!-- ── SPECIES DIRECTORY ──────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="filter-row">
+      <div class="filter-bar" style="margin-bottom:0;border-bottom:none;padding-bottom:0;">
+        <button class="filter-btn active" data-filter="all">All Species</button>
+        <button class="filter-btn" data-filter="cr">Critically Endangered</button>
+        <button class="filter-btn" data-filter="en">Endangered</button>
+        <button class="filter-btn" data-filter="vu">Vulnerable</button>
+      </div>
+      <div class="search-bar">
+        <input type="text" id="speciesSearch" placeholder="Search species..." />
+      </div>
+    </div>
+
+    <div class="species-grid" id="speciesGrid">
+
+      <div class="species-card" data-status="cr">
+        <div class="species-card-img">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Walking_tiger_female.jpg/1280px-Walking_tiger_female.jpg" alt="Malayan Tiger" loading="lazy"/>
+          <span class="badge badge-cr">Critically Endangered</span>
+        </div>
+        <div class="species-card-body">
+          <h3>Malayan Tiger</h3>
+          <p class="sci-name">Panthera tigris jacksoni</p>
+          <p>Fewer than 150 individuals remain. Malaysia's national symbol faces extinction from habitat loss, poaching, and declining prey populations.</p>
+        </div>
+        <div class="species-card-footer">
+          <span class="species-habitat">🌳 Rainforest</span>
+          <span class="learn-more">Learn more →</span>
+        </div>
+      </div>
+
+      <div class="species-card" data-status="cr">
+        <div class="species-card-img">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Sumatran_Rhino_2.jpg/1280px-Sumatran_Rhino_2.jpg" alt="Sumatran Rhinoceros" loading="lazy"/>
+          <span class="badge badge-cr">Critically Endangered</span>
+        </div>
+        <div class="species-card-body">
+          <h3>Sumatran Rhinoceros</h3>
+          <p class="sci-name">Dicerorhinus sumatrensis</p>
+          <p>One of the world's rarest mammals. Fewer than 80 individuals survive globally, with a tiny remnant population in Sabah, Borneo facing near-certain extinction.</p>
+        </div>
+        <div class="species-card-footer">
+          <span class="species-habitat">🌿 Dense Forest</span>
+          <span class="learn-more">Learn more →</span>
+        </div>
+      </div>
+
+      <div class="species-card" data-status="en">
+        <div class="species-card-img">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/2007-Bornean-Pygmy-Elephant.jpg/1280px-2007-Bornean-Pygmy-Elephant.jpg" alt="Bornean Pygmy Elephant" loading="lazy"/>
+          <span class="badge badge-en">Endangered</span>
+        </div>
+        <div class="species-card-body">
+          <h3>Bornean Pygmy Elephant</h3>
+          <p class="sci-name">Elephas maximus borneensis</p>
+          <p>The smallest elephant in Asia, found only in Sabah and north Kalimantan. Approximately 1,500 individuals remain, threatened by palm oil expansion.</p>
+        </div>
+        <div class="species-card-footer">
+          <span class="species-habitat">🌿 Borneo Lowlands</span>
+          <span class="learn-more">Learn more →</span>
+        </div>
+      </div>
+
+      <div class="species-card" data-status="en">
+        <div class="species-card-img">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Proboscis_Monkey_in_Borneo.jpg/1024px-Proboscis_Monkey_in_Borneo.jpg" alt="Proboscis Monkey" loading="lazy"/>
+          <span class="badge badge-en">Endangered</span>
+        </div>
+        <div class="species-card-body">
+          <h3>Proboscis Monkey</h3>
+          <p class="sci-name">Nasalis larvatus</p>
+          <p>Endemic to Borneo, famous for their distinctive large noses. Found only in coastal mangroves and riverine forests, their habitat is rapidly disappearing.</p>
+        </div>
+        <div class="species-card-footer">
+          <span class="species-habitat">🌊 Mangrove Forest</span>
+          <span class="learn-more">Learn more →</span>
+        </div>
+      </div>
+
+      <div class="species-card" data-status="en">
+        <div class="species-card-img">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Malayan_tapir.jpg/1280px-Malayan_tapir.jpg" alt="Malayan Tapir" loading="lazy"/>
+          <span class="badge badge-en">Endangered</span>
+        </div>
+        <div class="species-card-body">
+          <h3>Malayan Tapir</h3>
+          <p class="sci-name">Tapirus indicus</p>
+          <p>The largest of the four tapir species, with a distinctive black-and-white pattern. Found in the rainforests of Peninsular Malaysia, threatened by deforestation.</p>
+        </div>
+        <div class="species-card-footer">
+          <span class="species-habitat">🌲 Lowland Forest</span>
+          <span class="learn-more">Learn more →</span>
+        </div>
+      </div>
+
+      <div class="species-card" data-status="vu">
+        <div class="species-card-img">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Smiley_the_Sun_Bear_%28cropped%29.jpg/1280px-Smiley_the_Sun_Bear_%28cropped%29.jpg" alt="Malayan Sun Bear" loading="lazy"/>
+          <span class="badge badge-vu">Vulnerable</span>
+        </div>
+        <div class="species-card-body">
+          <h3>Malayan Sun Bear</h3>
+          <p class="sci-name">Helarctos malayanus</p>
+          <p>The world's smallest bear. Threatened by deforestation, poaching for bile, and capture for the exotic pet trade throughout Southeast Asia.</p>
+        </div>
+        <div class="species-card-footer">
+          <span class="species-habitat">🌲 Tropical Forest</span>
+          <span class="learn-more">Learn more →</span>
+        </div>
+      </div>
+
+      <div class="species-card" data-status="vu">
+        <div class="species-card-img">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Pangolin_%28Manis_tetradactyla%29-3.jpg/1280px-Pangolin_%28Manis_tetradactyla%29-3.jpg" alt="Sunda Pangolin" loading="lazy"/>
+          <span class="badge badge-vu">Vulnerable</span>
+        </div>
+        <div class="species-card-body">
+          <h3>Sunda Pangolin</h3>
+          <p class="sci-name">Manis javanica</p>
+          <p>The most trafficked mammal in the world. Pangolins are heavily targeted by poachers for their scales, used in traditional medicine across Asia.</p>
+        </div>
+        <div class="species-card-footer">
+          <span class="species-habitat">🌿 Secondary Forest</span>
+          <span class="learn-more">Learn more →</span>
+        </div>
+      </div>
+
+      <div class="species-card" data-status="en">
+        <div class="species-card-img">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Orang_Utan%2C_Ketambe_%28Thomas_Fuhrmann%29_OGP.jpg/1024px-Orang_Utan%2C_Ketambe_%28Thomas_Fuhrmann%29_OGP.jpg" alt="Bornean Orangutan" loading="lazy"/>
+          <span class="badge badge-en">Endangered</span>
+        </div>
+        <div class="species-card-body">
+          <h3>Bornean Orangutan</h3>
+          <p class="sci-name">Pongo pygmaeus</p>
+          <p>One of humanity's closest relatives. Found only in Borneo, their population has declined by over 50% in the last 60 years due to deforestation.</p>
+        </div>
+        <div class="species-card-footer">
+          <span class="species-habitat">🌴 Borneo Rainforest</span>
+          <span class="learn-more">Learn more →</span>
+        </div>
+      </div>
+
+      <div class="species-card" data-status="cr">
+        <div class="species-card-img">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Helmeted_Hornbill_-_Buceros_vigil.jpg/1024px-Helmeted_Hornbill_-_Buceros_vigil.jpg" alt="Helmeted Hornbill" loading="lazy"/>
+          <span class="badge badge-cr">Critically Endangered</span>
+        </div>
+        <div class="species-card-body">
+          <h3>Helmeted Hornbill</h3>
+          <p class="sci-name">Rhinoplax vigil</p>
+          <p>Prized for their unique solid casque, helmeted hornbills are heavily poached for the illegal wildlife trade, earning the nickname "ivory of the forest".</p>
+        </div>
+        <div class="species-card-footer">
+          <span class="species-habitat">🌿 Lowland Forest</span>
+          <span class="learn-more">Learn more →</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="noResults" style="display:none;text-align:center;padding:3rem;color:var(--gray-400);">
+      <div style="font-size:2.5rem;margin-bottom:1rem;">🔍</div>
+      <p>No species found. Try a different search term.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CTA ────────────────────────────────────────────────────────────────── -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>Help Protect These Species</h2>
+    <p>Every species on this page needs your help. Join our community, volunteer, or donate to make a real impact.</p>
+    <div class="cta-actions">
+      <a href="get-involved.html" class="btn btn-amber btn-lg">Get Involved</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+<script>
+  // Search functionality
+  document.getElementById('speciesSearch')?.addEventListener('input', function() {
+    const query = this.value.toLowerCase();
+    const cards = document.querySelectorAll('.species-card');
+    let visible = 0;
+    cards.forEach(card => {
+      const text = card.textContent.toLowerCase();
+      const show = text.includes(query);
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
+  });
+</script>
+</body>
+</html>

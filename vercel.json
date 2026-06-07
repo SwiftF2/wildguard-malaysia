@@ -1,0 +1,10 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/species", "destination": "/species.html" },
+    { "source": "/news", "destination": "/news.html" },
+    { "source": "/get-involved", "destination": "/get-involved.html" },
+    { "source": "/about", "destination": "/about.html" }
+  ]
+}

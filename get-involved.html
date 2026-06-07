@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Get Involved — WildGuard Malaysia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .involve-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; }
+    .pledge-layout { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; }
+    .pledge-info h2 { margin-bottom:1rem; }
+    .pledge-info p { color:var(--gray-600); margin-bottom:1.5rem; }
+    .pledge-point { display:flex; gap:1rem; margin-bottom:1.25rem; }
+    .pledge-point-icon { width:40px; height:40px; border-radius:var(--radius-sm); background:var(--green-pale); display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; }
+    .pledge-point-text h4 { margin-bottom:.2rem; font-size:.95rem; }
+    .pledge-point-text p { font-size:.85rem; color:var(--gray-600); margin:0; }
+    @media(max-width:900px){ .involve-grid,.pledge-layout{ grid-template-columns:1fr; } }
+    @media(min-width:600px) and (max-width:900px){ .involve-grid{ grid-template-columns:1fr 1fr; } }
+  </style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span> Get Involved</div>
+    <span class="section-label">Take Action</span>
+    <h1>Get Involved</h1>
+    <p>There are many ways to help protect Malaysia's endangered wildlife. Every action — big or small — makes a real difference.</p>
+  </div>
+</section>
+
+<!-- ── HOW TO HELP ────────────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="section-label">Ways to Help</span>
+      <h2>How You Can Make a Difference</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="involve-grid">
+
+      <div class="involve-card">
+        <div class="involve-icon">🤝</div>
+        <h3>Volunteer</h3>
+        <p>Join field patrols, community outreach programmes, and wildlife monitoring efforts across Malaysia with our partner organisations.</p>
+        <div class="org-list">
+          <div class="org-item"><span>🐯</span><span>MYCAT Tiger Guardian Programme</span></div>
+          <div class="org-item"><span>🌿</span><span>WWF-Malaysia Volunteer Network</span></div>
+          <div class="org-item"><span>🐘</span><span>Sabah Wildlife Department</span></div>
+        </div>
+        <a href="#pledge" class="btn btn-primary">Sign Up to Volunteer</a>
+      </div>
+
+      <div class="involve-card">
+        <div class="involve-icon">💚</div>
+        <h3>Donate</h3>
+        <p>Your donation directly funds anti-poaching patrols, wildlife rescue operations, habitat restoration, and community conservation programmes.</p>
+        <div class="org-list">
+          <a href="https://www.wwf.org.my/donate" target="_blank" class="org-item"><span>🌍</span><span>Donate to WWF-Malaysia</span></a>
+          <a href="https://www.mycat.my/donate" target="_blank" class="org-item"><span>🐯</span><span>Donate to MYCAT</span></a>
+          <a href="https://www.bsbcc.org.my" target="_blank" class="org-item"><span>🐻</span><span>Support BSBCC Sun Bear Centre</span></a>
+        </div>
+        <a href="https://www.wwf.org.my/donate" target="_blank" class="btn btn-amber">Donate Now</a>
+      </div>
+
+      <div class="involve-card">
+        <div class="involve-icon">📣</div>
+        <h3>Spread Awareness</h3>
+        <p>Share WildGuard Malaysia with your friends, family, and followers. The more people who know about this crisis, the stronger our collective voice becomes.</p>
+        <div class="org-list">
+          <div class="org-item" onclick="share('facebook')" style="cursor:pointer"><span>📘</span><span>Share on Facebook</span></div>
+          <div class="org-item" onclick="share('twitter')" style="cursor:pointer"><span>🐦</span><span>Share on X / Twitter</span></div>
+          <div class="org-item" onclick="share('whatsapp')" style="cursor:pointer"><span>💬</span><span>Share on WhatsApp</span></div>
+        </div>
+        <button class="btn btn-ghost" onclick="copyLink()">📋 Copy Website Link</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PLEDGE FORM ────────────────────────────────────────────────────────── -->
+<section class="section" style="background:var(--off-white)" id="pledge">
+  <div class="container">
+    <div class="pledge-layout">
+      <div class="pledge-info">
+        <span class="section-label">Make a Pledge</span>
+        <h2>Commit to Wildlife Conservation</h2>
+        <p>By making a personal pledge, you join thousands of Malaysians committed to protecting our natural heritage. Choose a pledge that fits your lifestyle — every commitment counts.</p>
+        <div class="pledge-point">
+          <div class="pledge-point-icon">🌳</div>
+          <div class="pledge-point-text">
+            <h4>Reduce Your Forest Footprint</h4>
+            <p>Choose sustainable products, reduce paper waste, and avoid goods linked to deforestation such as unsustainable palm oil.</p>
+          </div>
+        </div>
+        <div class="pledge-point">
+          <div class="pledge-point-icon">📢</div>
+          <div class="pledge-point-text">
+            <h4>Speak Up for Wildlife</h4>
+            <p>Share conservation news, report suspicious wildlife trade activity, and encourage your network to support conservation.</p>
+          </div>
+        </div>
+        <div class="pledge-point">
+          <div class="pledge-point-icon">💰</div>
+          <div class="pledge-point-text">
+            <h4>Support Conservation Financially</h4>
+            <p>Even a small monthly donation to WWF-Malaysia, MYCAT, or BSBCC makes a significant difference over time.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pledge-form" id="pledgeForm">
+        <h3 style="margin-bottom:1.5rem;">🌿 Make Your Pledge</h3>
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Enter your full name" required/>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com" required/>
+        </div>
+        <div class="form-group">
+          <label>I pledge to...</label>
+          <div class="pledge-options">
+            <div class="pledge-opt">
+              <div class="emoji">🌿</div>
+              <div class="label">Go Sustainable</div>
+            </div>
+            <div class="pledge-opt">
+              <div class="emoji">📢</div>
+              <div class="label">Spread Awareness</div>
+            </div>
+            <div class="pledge-opt">
+              <div class="emoji">💚</div>
+              <div class="label">Donate Monthly</div>
+            </div>
+            <div class="pledge-opt">
+              <div class="emoji">🤝</div>
+              <div class="label">Volunteer</div>
+            </div>
+            <div class="pledge-opt">
+              <div class="emoji">🎓</div>
+              <div class="label">Educate Others</div>
+            </div>
+            <div class="pledge-opt">
+              <div class="emoji">🌳</div>
+              <div class="label">Plant Trees</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Tell us more (optional)</label>
+          <textarea rows="3" placeholder="Share how you plan to make a difference..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Submit My Pledge 🌿</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PARTNER ORGS ───────────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="section-label">Our Partners</span>
+      <h2>Conservation Organisations</h2>
+      <p>WildGuard Malaysia works alongside these established conservation organisations. Visit their websites to learn more and donate directly.</p>
+      <div class="divider"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;">
+      <a href="https://www.wwf.org.my" target="_blank" style="display:block;background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-md);padding:2rem;text-align:center;transition:var(--transition);box-shadow:var(--shadow-sm);" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+        <div style="font-size:2.5rem;margin-bottom:.75rem;">🌍</div>
+        <h4 style="margin-bottom:.4rem;color:var(--green-dark);">WWF-Malaysia</h4>
+        <p style="font-size:.82rem;color:var(--gray-600);">World Wide Fund for Nature Malaysia</p>
+      </a>
+      <a href="https://www.mycat.my" target="_blank" style="display:block;background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-md);padding:2rem;text-align:center;transition:var(--transition);box-shadow:var(--shadow-sm);" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+        <div style="font-size:2.5rem;margin-bottom:.75rem;">🐯</div>
+        <h4 style="margin-bottom:.4rem;color:var(--green-dark);">MYCAT</h4>
+        <p style="font-size:.82rem;color:var(--gray-600);">Malaysian Conservation Alliance for Tigers</p>
+      </a>
+      <a href="https://www.wildlife.gov.my" target="_blank" style="display:block;background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-md);padding:2rem;text-align:center;transition:var(--transition);box-shadow:var(--shadow-sm);" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+        <div style="font-size:2.5rem;margin-bottom:.75rem;">🏛️</div>
+        <h4 style="margin-bottom:.4rem;color:var(--green-dark);">PERHILITAN</h4>
+        <p style="font-size:.82rem;color:var(--gray-600);">Dept. of Wildlife & National Parks</p>
+      </a>
+      <a href="https://www.bsbcc.org.my" target="_blank" style="display:block;background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-md);padding:2rem;text-align:center;transition:var(--transition);box-shadow:var(--shadow-sm);" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+        <div style="font-size:2.5rem;margin-bottom:.75rem;">🐻</div>
+        <h4 style="margin-bottom:.4rem;color:var(--green-dark);">BSBCC</h4>
+        <p style="font-size:.82rem;color:var(--gray-600);">Bornean Sun Bear Conservation Centre</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+<script>
+  document.getElementById('pledgeForm')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    window.showToast?.('🌿 Thank you! Your pledge has been recorded.');
+    this.reset();
+    document.querySelectorAll('.pledge-opt').forEach(o => o.classList.remove('active'));
+  });
+
+  function share(platform) {
+    const url = encodeURIComponent(window.location.origin);
+    const text = encodeURIComponent('Protect Malaysia\'s endangered wildlife with WildGuard Malaysia! 🐯🌿 #SDG15 #WildGuardMalaysia');
+    const urls = {
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+      twitter:  `https://twitter.com/intent/tweet?text=${text}&url=${url}`,
+      whatsapp: `https://wa.me/?text=${text}%20${url}`
+    };
+    window.open(urls[platform], '_blank');
+  }
+
+  function copyLink() {
+    navigator.clipboard?.writeText(window.location.origin).then(() => {
+      window.showToast?.('✅ Link copied to clipboard!');
+    });
+  }
+
+  // Make showToast globally available before main.js runs
+  window.showToast = function(msg) {
+    let t = document.querySelector('.toast');
+    if (!t) { t = document.createElement('div'); t.className = 'toast'; document.body.appendChild(t); }
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3200);
+  };
+</script>
+</body>
+</html>

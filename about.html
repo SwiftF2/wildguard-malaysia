@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About — WildGuard Malaysia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .about-layout { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+    .about-img-wrap { border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-lg); position:relative; }
+    .about-img-wrap img { width:100%; height:420px; object-fit:cover; display:block; }
+    .about-img-badge { position:absolute; bottom:1.5rem; left:1.5rem; background:var(--green-dark); color:var(--white); padding:.75rem 1.25rem; border-radius:var(--radius-md); }
+    .about-img-badge strong { display:block; font-size:1.4rem; font-family:'Montserrat',sans-serif; color:var(--green-mint); }
+    .about-img-badge span { font-size:.8rem; opacity:.8; }
+    .values-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    .value-card { padding:1.75rem; background:var(--white); border-radius:var(--radius-lg); border:1px solid var(--gray-200); box-shadow:var(--shadow-sm); text-align:center; }
+    .value-icon { font-size:2rem; margin-bottom:.75rem; }
+    .value-card h3 { font-size:1rem; margin-bottom:.5rem; }
+    .value-card p { font-size:.85rem; color:var(--gray-600); }
+    .sdg-card { background:var(--green-dark); border-radius:var(--radius-lg); padding:2.5rem; color:var(--white); display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:center; }
+    .sdg-badge-big { width:100px; height:100px; background:var(--green-mid); border-radius:var(--radius-md); display:flex; flex-direction:column; align-items:center; justify-content:center; font-size:.65rem; font-weight:700; color:var(--white); text-align:center; padding:.5rem; letter-spacing:.05em; text-transform:uppercase; }
+    .sdg-badge-big span { font-size:2.5rem; font-weight:900; color:var(--green-mint); font-family:'Montserrat',sans-serif; line-height:1; }
+    @media(max-width:900px){ .about-layout,.sdg-card,.values-grid{ grid-template-columns:1fr; } }
+    @media(min-width:600px) and (max-width:900px){ .values-grid{ grid-template-columns:1fr 1fr; } }
+  </style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span> About</div>
+    <span class="section-label">Our Mission</span>
+    <h1>About WildGuard Malaysia</h1>
+    <p>A Final Year Project by a Diploma in Multimedia student at Management and Science University — designed to raise awareness about Malaysia's endangered wildlife.</p>
+  </div>
+</section>
+
+<!-- ── ABOUT ──────────────────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="about-layout">
+      <div class="about-img-wrap">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Walking_tiger_female.jpg/1280px-Walking_tiger_female.jpg" alt="Malayan Tiger"/>
+        <div class="about-img-badge">
+          <strong>&lt; 150</strong>
+          <span>Malayan Tigers Remaining</span>
+        </div>
+      </div>
+      <div>
+        <span class="section-label">Who We Are</span>
+        <h2>Giving Malaysia's Wildlife a Digital Voice</h2>
+        <div class="divider"></div>
+        <p class="mt-3">WildGuard Malaysia was created as a Final Year Project for the Diploma in Multimedia programme at Management and Science University (MSU), aligned with the United Nations Sustainable Development Goal 15 — Life on Land.</p>
+        <p class="mt-2">The project was born from a simple observation: despite Malaysia being one of the world's most biodiverse nations, most Malaysians have very limited knowledge of how many of our wildlife species are endangered — or what they can personally do to help.</p>
+        <p class="mt-2">WildGuard Malaysia bridges this gap by creating a visually engaging, accessible, and community-driven digital platform that makes wildlife conservation feel personal, urgent, and achievable for every Malaysian.</p>
+        <div class="mt-4" style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="species.html" class="btn btn-primary">Explore Species</a>
+          <a href="get-involved.html" class="btn btn-ghost">Get Involved</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SDG 15 ──────────────────────────────────────────────────────────────── -->
+<section class="section-sm" style="background:var(--off-white)">
+  <div class="container">
+    <div class="sdg-card">
+      <div style="display:flex;gap:1.5rem;align-items:center;">
+        <div class="sdg-badge-big">
+          <span>15</span>
+          Life on Land
+        </div>
+        <div>
+          <h3 style="color:var(--green-mint);margin-bottom:.5rem;">SDG 15 — Life on Land</h3>
+          <p style="color:rgba(255,255,255,.75);font-size:.9rem;line-height:1.65;">WildGuard Malaysia directly supports SDG 15, which calls on all nations to protect, restore and promote sustainable use of terrestrial ecosystems, sustainably manage forests, combat desertification, halt and reverse land degradation and halt biodiversity loss.</p>
+        </div>
+      </div>
+      <div>
+        <h4 style="color:var(--white);margin-bottom:1rem;">How This Project Contributes</h4>
+        <div style="display:flex;flex-direction:column;gap:.65rem;">
+          <div style="display:flex;gap:.75rem;align-items:flex-start;">
+            <span style="color:var(--green-mint);font-size:1rem;flex-shrink:0;">✓</span>
+            <span style="font-size:.88rem;color:rgba(255,255,255,.75);">Raises public awareness about endangered Malaysian wildlife species</span>
+          </div>
+          <div style="display:flex;gap:.75rem;align-items:flex-start;">
+            <span style="color:var(--green-mint);font-size:1rem;flex-shrink:0;">✓</span>
+            <span style="font-size:.88rem;color:rgba(255,255,255,.75);">Connects users with established conservation organisations</span>
+          </div>
+          <div style="display:flex;gap:.75rem;align-items:flex-start;">
+            <span style="color:var(--green-mint);font-size:1rem;flex-shrink:0;">✓</span>
+            <span style="font-size:.88rem;color:rgba(255,255,255,.75);">Encourages community pledges and direct conservation action</span>
+          </div>
+          <div style="display:flex;gap:.75rem;align-items:flex-start;">
+            <span style="color:var(--green-mint);font-size:1rem;flex-shrink:0;">✓</span>
+            <span style="font-size:.88rem;color:rgba(255,255,255,.75);">Educates Malaysians on the impact of deforestation on biodiversity</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── VALUES ─────────────────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="section-label">Our Values</span>
+      <h2>What Drives WildGuard Malaysia</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🎯</div>
+        <h3>Awareness First</h3>
+        <p>We believe that knowledge is the foundation of action. WildGuard Malaysia makes complex conservation data accessible and understandable for everyone.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🤝</div>
+        <h3>Community Action</h3>
+        <p>Conservation is a collective effort. We connect individuals with organisations and empower every Malaysian to be part of the solution.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">💡</div>
+        <h3>Design for Impact</h3>
+        <p>We use the power of design and multimedia to create emotional connections between people and wildlife — because caring leads to protecting.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🌿</div>
+        <h3>Sustainability</h3>
+        <p>Every design decision — from the content to the code — is made with long-term environmental awareness and responsible practices in mind.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🔬</div>
+        <h3>Research-Based</h3>
+        <p>All species profiles, conservation statistics, and news content are sourced from reputable organisations including IUCN, WWF-Malaysia, MYCAT, and PERHILITAN.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">📱</div>
+        <h3>Accessible to All</h3>
+        <p>WildGuard Malaysia is designed to work beautifully on any device — desktop, tablet, or mobile — ensuring every Malaysian can access it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECT INFO ───────────────────────────────────────────────────────── -->
+<section class="section" style="background:var(--off-white)">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="section-label">FYP Project</span>
+      <h2>Project Information</h2>
+      <div class="divider"></div>
+    </div>
+    <div style="max-width:720px;margin:0 auto;">
+      <div style="background:var(--white);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm);border:1px solid var(--gray-200);">
+        <div style="background:var(--green-dark);padding:1.5rem 2rem;">
+          <h3 style="color:var(--white);margin:0;">WildGuard Malaysia — FYP Details</h3>
+        </div>
+        <div style="padding:2rem;display:flex;flex-direction:column;gap:1rem;">
+          <div style="display:grid;grid-template-columns:160px 1fr;gap:.5rem;align-items:start;padding-bottom:1rem;border-bottom:1px solid var(--gray-100);">
+            <span style="font-size:.85rem;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:.06em;">Project Title</span>
+            <span style="font-size:.95rem;color:var(--text-dark);">WildGuard Malaysia: An Interactive Website Interface for Endangered Wildlife Awareness and Conservation Action in Malaysia</span>
+          </div>
+          <div style="display:grid;grid-template-columns:160px 1fr;gap:.5rem;align-items:center;padding-bottom:1rem;border-bottom:1px solid var(--gray-100);">
+            <span style="font-size:.85rem;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:.06em;">Programme</span>
+            <span style="font-size:.95rem;color:var(--text-dark);">Diploma in Multimedia (DMM)</span>
+          </div>
+          <div style="display:grid;grid-template-columns:160px 1fr;gap:.5rem;align-items:center;padding-bottom:1rem;border-bottom:1px solid var(--gray-100);">
+            <span style="font-size:.85rem;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:.06em;">University</span>
+            <span style="font-size:.95rem;color:var(--text-dark);">Management and Science University (MSU)</span>
+          </div>
+          <div style="display:grid;grid-template-columns:160px 1fr;gap:.5rem;align-items:center;padding-bottom:1rem;border-bottom:1px solid var(--gray-100);">
+            <span style="font-size:.85rem;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:.06em;">Student</span>
+            <span style="font-size:.95rem;color:var(--text-dark);">[ Your Full Name ] — [ Student ID ]</span>
+          </div>
+          <div style="display:grid;grid-template-columns:160px 1fr;gap:.5rem;align-items:center;padding-bottom:1rem;border-bottom:1px solid var(--gray-100);">
+            <span style="font-size:.85rem;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:.06em;">Supervisor</span>
+            <span style="font-size:.95rem;color:var(--text-dark);">[ Supervisor Name ]</span>
+          </div>
+          <div style="display:grid;grid-template-columns:160px 1fr;gap:.5rem;align-items:center;padding-bottom:1rem;border-bottom:1px solid var(--gray-100);">
+            <span style="font-size:.85rem;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:.06em;">Output Type</span>
+            <span style="font-size:.95rem;color:var(--text-dark);">Website Interface Design</span>
+          </div>
+          <div style="display:grid;grid-template-columns:160px 1fr;gap:.5rem;align-items:center;padding-bottom:1rem;border-bottom:1px solid var(--gray-100);">
+            <span style="font-size:.85rem;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:.06em;">SDG Alignment</span>
+            <span class="badge badge-sdg">🌿 SDG 15 — Life on Land</span>
+          </div>
+          <div style="display:grid;grid-template-columns:160px 1fr;gap:.5rem;align-items:center;">
+            <span style="font-size:.85rem;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:.06em;">Tools Used</span>
+            <span style="font-size:.95rem;color:var(--text-dark);">Adobe Illustrator · Photoshop · Premiere Pro · Adobe XD</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="mt-4">
+        <h3 style="margin-bottom:2rem;">Project Timeline</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="week">Week 2</div>
+            <h4>Proposal Presentation</h4>
+            <p>Two draft proposals presented to supervisor. WildGuard Malaysia selected as the FYP direction.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="week">Weeks 3–6</div>
+            <h4>Research & Rough Designing</h4>
+            <p>Target audience research, competitor analysis, wireframe sketches, and site architecture planning.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="week">Weeks 5–10</div>
+            <h4>Design Process</h4>
+            <p>Visual identity development, species card design, illustration creation, and UI component design in Adobe Illustrator and Photoshop.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="week">Weeks 9–13</div>
+            <h4>UI/UX Prototyping</h4>
+            <p>High-fidelity interactive prototype in Adobe XD, responsive design for desktop and mobile, user testing and refinements.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="week">Week 12</div>
+            <h4>Final Exhibition</h4>
+            <p>Final presentation and product exhibition to panel of evaluators and the public.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="week">Week 14</div>
+            <h4>Final Submission</h4>
+            <p>Final draft report, complete report, and logbook submission to FYP coordinator.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="container">
+    <h2>Every Species Has a Story Worth Protecting</h2>
+    <p>Explore Malaysia's endangered wildlife and find out how you can make a difference today.</p>
+    <div class="cta-actions">
+      <a href="species.html" class="btn btn-amber btn-lg">Explore Species</a>
+      <a href="get-involved.html" class="btn btn-outline btn-lg">Take Action</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

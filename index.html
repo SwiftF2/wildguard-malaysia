@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WildGuard Malaysia — Protecting Endangered Wildlife</title>
+  <meta name="description" content="WildGuard Malaysia is a digital platform dedicated to raising awareness about Malaysia's endangered wildlife species and promoting conservation action aligned with SDG 15." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .featured-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+    .why-card { padding: 2rem; background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--gray-200); box-shadow: var(--shadow-sm); transition: var(--transition); }
+    .why-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+    .why-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .why-card h3 { margin-bottom: .5rem; }
+    .why-card p { font-size: .9rem; color: var(--gray-600); }
+    .news-preview { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    @media(max-width:900px) { .featured-grid, .why-grid, .news-preview { grid-template-columns: 1fr; } }
+    @media(min-width:600px) and (max-width:900px) { .featured-grid, .why-grid, .news-preview { grid-template-columns: repeat(2,1fr); } }
+  </style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<!-- ── HERO ──────────────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-grid-overlay"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">🌿 SDG 15 — Life on Land</div>
+      <h1>Protecting Malaysia's<br/><span>Endangered Wildlife</span></h1>
+      <p>Malaysia is one of the world's most biodiverse nations — yet hundreds of our wildlife species face extinction. WildGuard Malaysia is here to change that.</p>
+      <div class="hero-actions">
+        <a href="species.html" class="btn btn-primary btn-lg">Explore Species</a>
+        <a href="get-involved.html" class="btn btn-outline btn-lg">Take Action</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="container">
+      <div class="stat-card">
+        <div class="stat-num"><span data-count="150" data-suffix="+">150+</span></div>
+        <div class="stat-label">Malayan Tigers Left</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num"><span data-count="300" data-suffix="+">300+</span></div>
+        <div class="stat-label">Endangered Species</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num"><span data-count="67" data-suffix="%">67%</span></div>
+        <div class="stat-label">Forest Loss Since 1900</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ── WHY IT MATTERS ─────────────────────────────────────────────────────── -->
+<section class="section" style="background:var(--off-white)">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="section-label">Why It Matters</span>
+      <h2>Malaysia's Wildlife Is Under Threat</h2>
+      <p>Rapid deforestation, poaching and the illegal wildlife trade are pushing Malaysia's most iconic species to the brink of extinction.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🌳</div>
+        <h3>Deforestation Crisis</h3>
+        <p>Malaysia has lost over 67% of its original forest cover since 1900, destroying the habitats of thousands of species that depend on these ecosystems.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔫</div>
+        <h3>Poaching & Wildlife Trade</h3>
+        <p>Illegal poaching and the wildlife trade remain major threats, with species like the Malayan Tiger fetching high prices on black markets across Southeast Asia.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📢</div>
+        <h3>Low Public Awareness</h3>
+        <p>Despite the severity of the crisis, most Malaysians are unaware of how many species are endangered and what they can personally do to help.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURED SPECIES ───────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-header" style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <div>
+        <span class="section-label">Species Directory</span>
+        <h2>Featured Endangered Species</h2>
+        <div class="divider"></div>
+      </div>
+      <a href="species.html" class="btn btn-ghost">View All Species →</a>
+    </div>
+    <div class="featured-grid">
+
+      <div class="species-card" data-status="cr" onclick="location.href='species.html'">
+        <div class="species-card-img">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Walking_tiger_female.jpg/1280px-Walking_tiger_female.jpg" alt="Malayan Tiger" loading="lazy" />
+          <span class="badge badge-cr">Critically Endangered</span>
+        </div>
+        <div class="species-card-body">
+          <h3>Malayan Tiger</h3>
+          <p class="sci-name">Panthera tigris jacksoni</p>
+          <p>Fewer than 150 individuals remain in the wild. The Malayan Tiger is a national symbol of Malaysia, yet faces extinction from habitat loss and poaching.</p>
+        </div>
+        <div class="species-card-footer">
+          <span class="species-habitat">🌳 Rainforest</span>
+          <span class="learn-more">Learn more →</span>
+        </div>
+      </div>
+
+      <div class="species-card" data-status="en" onclick="location.href='species.html'">
+        <div class="species-card-img">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/2007-Bornean-Pygmy-Elephant.jpg/1280px-2007-Bornean-Pygmy-Elephant.jpg" alt="Bornean Pygmy Elephant" loading="lazy" />
+          <span class="badge badge-en">Endangered</span>
+        </div>
+        <div class="species-card-body">
+          <h3>Bornean Pygmy Elephant</h3>
+          <p class="sci-name">Elephas maximus borneensis</p>
+          <p>The smallest elephant in Asia, found only in Sabah and Kalimantan. With only ~1,500 individuals left, their forest homes are rapidly disappearing.</p>
+        </div>
+        <div class="species-card-footer">
+          <span class="species-habitat">🌿 Borneo Lowlands</span>
+          <span class="learn-more">Learn more →</span>
+        </div>
+      </div>
+
+      <div class="species-card" data-status="vu" onclick="location.href='species.html'">
+        <div class="species-card-img">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Smiley_the_Sun_Bear_%28cropped%29.jpg/1280px-Smiley_the_Sun_Bear_%28cropped%29.jpg" alt="Malayan Sun Bear" loading="lazy" />
+          <span class="badge badge-vu">Vulnerable</span>
+        </div>
+        <div class="species-card-body">
+          <h3>Malayan Sun Bear</h3>
+          <p class="sci-name">Helarctos malayanus</p>
+          <p>The world's smallest bear, found across Southeast Asia. Sun bears are threatened by deforestation and the illegal wildlife trade for their bile and body parts.</p>
+        </div>
+        <div class="species-card-footer">
+          <span class="species-habitat">🌲 Tropical Forest</span>
+          <span class="learn-more">Learn more →</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── IMPACT STATS ───────────────────────────────────────────────────────── -->
+<section class="impact-section">
+  <div class="impact-grid">
+    <div class="impact-item">
+      <span class="impact-num" data-count="300" data-suffix="+">300+</span>
+      <span class="impact-label">Endangered Species in Malaysia</span>
+    </div>
+    <div class="impact-item">
+      <span class="impact-num" data-count="67" data-suffix="%">67%</span>
+      <span class="impact-label">Forest Cover Lost Since 1900</span>
+    </div>
+    <div class="impact-item">
+      <span class="impact-num" data-count="150" data-prefix="<">&#60;150</span>
+      <span class="impact-label">Malayan Tigers Remaining</span>
+    </div>
+    <div class="impact-item">
+      <span class="impact-num" data-count="17">17</span>
+      <span class="impact-label">SDGs for a Sustainable World</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── LATEST NEWS ────────────────────────────────────────────────────────── -->
+<section class="section" style="background:var(--off-white)">
+  <div class="container">
+    <div class="section-header" style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <div>
+        <span class="section-label">Conservation News</span>
+        <h2>Latest Updates</h2>
+        <div class="divider"></div>
+      </div>
+      <a href="news.html" class="btn btn-ghost">All News →</a>
+    </div>
+    <div class="news-preview">
+
+      <div class="news-card">
+        <div class="news-card-img">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Lion_waiting_in_Namibia.jpg/1280px-Lion_waiting_in_Namibia.jpg" alt="Conservation news" loading="lazy" />
+        </div>
+        <div class="news-card-body">
+          <div class="news-meta"><span class="news-tag">Tiger</span><span>June 2026</span></div>
+          <h3>Camera Traps Spot New Tiger Cubs in Taman Negara</h3>
+          <p>PERHILITAN confirms three new Malayan Tiger cubs captured on camera trap footage in Taman Negara National Park, offering a rare glimmer of hope.</p>
+        </div>
+        <div class="news-card-footer"><a href="news.html" class="learn-more">Read more →</a></div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-card-img">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/2007-Bornean-Pygmy-Elephant.jpg/1280px-2007-Bornean-Pygmy-Elephant.jpg" alt="Elephant corridor" loading="lazy" />
+        </div>
+        <div class="news-card-body">
+          <div class="news-meta"><span class="news-tag">Elephant</span><span>May 2026</span></div>
+          <h3>Sabah Wildlife Department Expands Elephant Corridor</h3>
+          <p>A new wildlife corridor in Sabah connecting two key forest reserves aims to reduce human-elephant conflict and protect the Pygmy Elephant population.</p>
+        </div>
+        <div class="news-card-footer"><a href="news.html" class="learn-more">Read more →</a></div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-card-img">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Smiley_the_Sun_Bear_%28cropped%29.jpg/1280px-Smiley_the_Sun_Bear_%28cropped%29.jpg" alt="Sun Bear Centre" loading="lazy" />
+        </div>
+        <div class="news-card-body">
+          <div class="news-meta"><span class="news-tag">Sun Bear</span><span>April 2026</span></div>
+          <h3>Bornean Sun Bear Conservation Centre Celebrates 15 Years</h3>
+          <p>BSBCC marks 15 years of rescuing and rehabilitating sun bears in Sabah, having successfully released over 20 bears back into the wild.</p>
+        </div>
+        <div class="news-card-footer"><a href="news.html" class="learn-more">Read more →</a></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ────────────────────────────────────────────────────────────────── -->
+<section class="cta-banner">
+  <div class="container">
+    <span class="section-label" style="color:var(--green-mint)">Every Action Counts</span>
+    <h2>Be a Guardian of Malaysia's Wildlife</h2>
+    <p>Whether you volunteer, donate, or simply spread the word — your action makes a real difference in protecting Malaysia's irreplaceable wildlife heritage.</p>
+    <div class="cta-actions">
+      <a href="get-involved.html" class="btn btn-amber btn-lg">Get Involved Today</a>
+      <a href="species.html" class="btn btn-outline btn-lg">Explore All Species</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
