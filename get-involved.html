@@ -130,12 +130,6 @@
         <!-- Honeypot spam trap (hidden from humans, catches bots) -->
         <input type="text" name="_gotcha" style="display:none"/>
 
-        <!-- Formspree: redirect to same page after submit -->
-        <input type="hidden" name="_next" value="https://wildguard-malaysia.vercel.app/get-involved"/>
-
-        <!-- Formspree: custom email subject -->
-        <input type="hidden" name="_subject" value="🌿 New WildGuard Malaysia Pledge!"/>
-
         <div class="form-group">
           <label for="pledge_name">Your Name</label>
           <input
@@ -259,20 +253,35 @@
     opt.addEventListener('click', () => {
       document.querySelectorAll('.pledge-opt').forEach(o => o.classList.remove('active'));
       opt.classList.add('active');
-      // Write selected value into hidden field for Formspree
-      document.getElementById('pledgeHidden').value = opt.dataset.value || opt.querySelector('.label')?.textContent || '';
+      document.getElementById('pledgeHidden').value = opt.dataset.value || '';
       document.getElementById('pledgeError').style.display = 'none';
     });
   });
 
-  // ── FORMSPREE SUBMIT ──────────────────────────────────────────────────────
+  // ── FORMSPREE SUBMIT (JSON method — more reliable) ────────────────────────
   document.getElementById('pledgeForm')?.addEventListener('submit', async function(e) {
     e.preventDefault();
 
+    // Read field values explicitly by ID
+    const name         = document.getElementById('pledge_name').value.trim();
+    const email        = document.getElementById('pledge_email').value.trim();
+    const message      = document.getElementById('pledge_message').value.trim();
+    const pledgeChoice = document.getElementById('pledgeHidden').value;
+
+    // Validate name
+    if (!name) {
+      document.getElementById('pledge_name').focus();
+      return;
+    }
+    // Validate email
+    if (!email) {
+      document.getElementById('pledge_email').focus();
+      return;
+    }
     // Validate pledge option selected
-    const pledge = document.getElementById('pledgeHidden').value;
-    if (!pledge) {
+    if (!pledgeChoice) {
       document.getElementById('pledgeError').style.display = 'block';
+      document.getElementById('pledgeError').scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
 
@@ -280,31 +289,46 @@
     btn.textContent = 'Sending... ⏳';
     btn.disabled = true;
 
+    // Build JSON payload — Formspree accepts application/json
+    const payload = {
+      name:          name,
+      email:         email,
+      pledge_choice: pledgeChoice,
+      message:       message || '(No additional message)',
+      _subject:      '🌿 New WildGuard Malaysia Pledge!'
+    };
+
     try {
       const response = await fetch(this.action, {
-        method: 'POST',
-        body: new FormData(this),
-        headers: { 'Accept': 'application/json' }
+        method:  'POST',
+        body:    JSON.stringify(payload),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept':       'application/json'
+        }
       });
 
       if (response.ok) {
         // Show success message
         document.getElementById('pledgeSuccess').style.display = 'block';
         btn.style.display = 'none';
-        this.querySelectorAll('input:not([type=hidden]), textarea').forEach(el => el.value = '');
+        // Clear all fields
+        document.getElementById('pledge_name').value    = '';
+        document.getElementById('pledge_email').value   = '';
+        document.getElementById('pledge_message').value = '';
+        document.getElementById('pledgeHidden').value   = '';
         document.querySelectorAll('.pledge-opt').forEach(o => o.classList.remove('active'));
-        document.getElementById('pledgeHidden').value = '';
-        // Scroll to success message
+        // Scroll to success
         document.getElementById('pledgeSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
       } else {
-        const data = await response.json();
+        const data = await response.json().catch(() => ({}));
         btn.textContent = 'Submit My Pledge 🌿';
-        btn.disabled = false;
+        btn.disabled    = false;
         alert(data?.errors?.[0]?.message || 'Something went wrong. Please try again.');
       }
     } catch (err) {
       btn.textContent = 'Submit My Pledge 🌿';
-      btn.disabled = false;
+      btn.disabled    = false;
       alert('Network error. Please check your connection and try again.');
     }
   });
