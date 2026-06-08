@@ -38,8 +38,8 @@ WildGuard Malaysia is a website interface designed to raise public awareness abo
 
 ## 📋 FYP Details
 
-- **Student:** [ Your Full Name ] — [ Student ID ]
-- **Supervisor:** [ Supervisor Name ]
+- **Student:** MOHAMAD AMALUDDIN BIN MOHD NORSHAMUDDIN — 012024020287
+- **Supervisor:** SIR IZZUL IMAN BIN SUHAIRI
 - **Programme:** Diploma in Multimedia (DMM)
 - **Output:** Website Interface Design
 - **SDG:** SDG 15 — Life on Land
