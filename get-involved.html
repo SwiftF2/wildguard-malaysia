@@ -115,51 +115,103 @@
         </div>
       </div>
 
-      <div class="pledge-form" id="pledgeForm">
+      <!-- ⚠️ Replace YOUR_FORM_ID with your actual Formspree ID e.g. xyzabcde -->
+      <form
+        class="pledge-form"
+        id="pledgeForm"
+        action="https://formspree.io/f/mwvjokgw"
+        method="POST"
+      >
         <h3 style="margin-bottom:1.5rem;">🌿 Make Your Pledge</h3>
+
+        <!-- Hidden field: sends the selected pledge option to Formspree -->
+        <input type="hidden" name="pledge_choice" id="pledgeHidden" value=""/>
+
+        <!-- Honeypot spam trap (hidden from humans, catches bots) -->
+        <input type="text" name="_gotcha" style="display:none"/>
+
+        <!-- Formspree: redirect to same page after submit -->
+        <input type="hidden" name="_next" value="https://wildguard-malaysia.vercel.app/get-involved"/>
+
+        <!-- Formspree: custom email subject -->
+        <input type="hidden" name="_subject" value="🌿 New WildGuard Malaysia Pledge!"/>
+
         <div class="form-group">
-          <label>Your Name</label>
-          <input type="text" placeholder="Enter your full name" required/>
+          <label for="pledge_name">Your Name</label>
+          <input
+            type="text"
+            id="pledge_name"
+            name="name"
+            placeholder="Enter your full name"
+            required
+          />
         </div>
+
         <div class="form-group">
-          <label>Email Address</label>
-          <input type="email" placeholder="your@email.com" required/>
+          <label for="pledge_email">Email Address</label>
+          <input
+            type="email"
+            id="pledge_email"
+            name="email"
+            placeholder="your@email.com"
+            required
+          />
         </div>
+
         <div class="form-group">
           <label>I pledge to...</label>
           <div class="pledge-options">
-            <div class="pledge-opt">
+            <div class="pledge-opt" data-value="Go Sustainable">
               <div class="emoji">🌿</div>
               <div class="label">Go Sustainable</div>
             </div>
-            <div class="pledge-opt">
+            <div class="pledge-opt" data-value="Spread Awareness">
               <div class="emoji">📢</div>
               <div class="label">Spread Awareness</div>
             </div>
-            <div class="pledge-opt">
+            <div class="pledge-opt" data-value="Donate Monthly">
               <div class="emoji">💚</div>
               <div class="label">Donate Monthly</div>
             </div>
-            <div class="pledge-opt">
+            <div class="pledge-opt" data-value="Volunteer">
               <div class="emoji">🤝</div>
               <div class="label">Volunteer</div>
             </div>
-            <div class="pledge-opt">
+            <div class="pledge-opt" data-value="Educate Others">
               <div class="emoji">🎓</div>
               <div class="label">Educate Others</div>
             </div>
-            <div class="pledge-opt">
+            <div class="pledge-opt" data-value="Plant Trees">
               <div class="emoji">🌳</div>
               <div class="label">Plant Trees</div>
             </div>
           </div>
+          <p id="pledgeError" style="display:none;color:var(--red-cr);font-size:.82rem;margin-top:.5rem;">⚠️ Please select a pledge option.</p>
         </div>
+
         <div class="form-group">
-          <label>Tell us more (optional)</label>
-          <textarea rows="3" placeholder="Share how you plan to make a difference..."></textarea>
+          <label for="pledge_message">Tell us more (optional)</label>
+          <textarea
+            id="pledge_message"
+            name="message"
+            rows="3"
+            placeholder="Share how you plan to make a difference..."
+          ></textarea>
         </div>
-        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Submit My Pledge 🌿</button>
-      </div>
+
+        <!-- Submit states -->
+        <button type="submit" class="btn btn-primary" id="pledgeSubmitBtn" style="width:100%;justify-content:center;">
+          Submit My Pledge 🌿
+        </button>
+
+        <!-- Success message (shown after redirect, or via JS) -->
+        <div id="pledgeSuccess" style="display:none;background:var(--green-pale);border:1.5px solid var(--green-mint);border-radius:var(--radius-md);padding:1.25rem;text-align:center;margin-top:1rem;">
+          <div style="font-size:1.75rem;margin-bottom:.5rem;">🎉</div>
+          <strong style="color:var(--green-dark);">Thank you for your pledge!</strong>
+          <p style="font-size:.88rem;color:var(--gray-600);margin-top:.35rem;">You are now part of the WildGuard Malaysia conservation community.</p>
+        </div>
+
+      </form>
     </div>
   </div>
 </section>
@@ -202,11 +254,59 @@
 <script src="js/components.js"></script>
 <script src="js/main.js"></script>
 <script>
-  document.getElementById('pledgeForm')?.addEventListener('submit', function(e) {
+  // ── PLEDGE OPTION SELECTION ───────────────────────────────────────────────
+  document.querySelectorAll('.pledge-opt').forEach(opt => {
+    opt.addEventListener('click', () => {
+      document.querySelectorAll('.pledge-opt').forEach(o => o.classList.remove('active'));
+      opt.classList.add('active');
+      // Write selected value into hidden field for Formspree
+      document.getElementById('pledgeHidden').value = opt.dataset.value || opt.querySelector('.label')?.textContent || '';
+      document.getElementById('pledgeError').style.display = 'none';
+    });
+  });
+
+  // ── FORMSPREE SUBMIT ──────────────────────────────────────────────────────
+  document.getElementById('pledgeForm')?.addEventListener('submit', async function(e) {
     e.preventDefault();
-    window.showToast?.('🌿 Thank you! Your pledge has been recorded.');
-    this.reset();
-    document.querySelectorAll('.pledge-opt').forEach(o => o.classList.remove('active'));
+
+    // Validate pledge option selected
+    const pledge = document.getElementById('pledgeHidden').value;
+    if (!pledge) {
+      document.getElementById('pledgeError').style.display = 'block';
+      return;
+    }
+
+    const btn = document.getElementById('pledgeSubmitBtn');
+    btn.textContent = 'Sending... ⏳';
+    btn.disabled = true;
+
+    try {
+      const response = await fetch(this.action, {
+        method: 'POST',
+        body: new FormData(this),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        // Show success message
+        document.getElementById('pledgeSuccess').style.display = 'block';
+        btn.style.display = 'none';
+        this.querySelectorAll('input:not([type=hidden]), textarea').forEach(el => el.value = '');
+        document.querySelectorAll('.pledge-opt').forEach(o => o.classList.remove('active'));
+        document.getElementById('pledgeHidden').value = '';
+        // Scroll to success message
+        document.getElementById('pledgeSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        const data = await response.json();
+        btn.textContent = 'Submit My Pledge 🌿';
+        btn.disabled = false;
+        alert(data?.errors?.[0]?.message || 'Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      btn.textContent = 'Submit My Pledge 🌿';
+      btn.disabled = false;
+      alert('Network error. Please check your connection and try again.');
+    }
   });
 
   function share(platform) {
