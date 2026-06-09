@@ -115,7 +115,7 @@
         </div>
       </div>
 
-      <!-- ⚠️ Replace YOUR_FORM_ID with your actual Formspree ID e.g. xyzabcde -->
+      <!-- PLEDGE FORM — plain HTML POST to Formspree, no JavaScript needed -->
       <form
         class="pledge-form"
         id="pledgeForm"
@@ -124,14 +124,16 @@
       >
         <h3 style="margin-bottom:1.5rem;">🌿 Make Your Pledge</h3>
 
-        <!-- Hidden field: sends the selected pledge option to Formspree -->
-        <input type="hidden" name="pledge_choice" id="pledgeHidden" value=""/>
+        <!-- Formspree special fields -->
+        <input type="hidden" name="_subject" value="🌿 New WildGuard Malaysia Pledge!"/>
+        <input type="hidden" name="_next"    value="https://wildguard-malaysia.vercel.app/thank-you.html"/>
+        <input type="text"   name="_gotcha"  style="display:none"/>
 
-        <!-- Honeypot spam trap (hidden from humans, catches bots) -->
-        <input type="text" name="_gotcha" style="display:none"/>
+        <!-- Hidden: pledge choice (set by JS when user clicks an option) -->
+        <input type="hidden" name="pledge_choice" id="pledgeHidden" value="Not selected"/>
 
         <div class="form-group">
-          <label for="pledge_name">Your Name</label>
+          <label for="pledge_name">Your Name *</label>
           <input
             type="text"
             id="pledge_name"
@@ -142,7 +144,7 @@
         </div>
 
         <div class="form-group">
-          <label for="pledge_email">Email Address</label>
+          <label for="pledge_email">Email Address *</label>
           <input
             type="email"
             id="pledge_email"
@@ -153,7 +155,7 @@
         </div>
 
         <div class="form-group">
-          <label>I pledge to...</label>
+          <label>I pledge to... *</label>
           <div class="pledge-options">
             <div class="pledge-opt" data-value="Go Sustainable">
               <div class="emoji">🌿</div>
@@ -180,7 +182,9 @@
               <div class="label">Plant Trees</div>
             </div>
           </div>
-          <p id="pledgeError" style="display:none;color:var(--red-cr);font-size:.82rem;margin-top:.5rem;">⚠️ Please select a pledge option.</p>
+          <p id="pledgeError" style="display:none;color:var(--red-cr);font-size:.82rem;margin-top:.5rem;">
+            ⚠️ Please select a pledge option before submitting.
+          </p>
         </div>
 
         <div class="form-group">
@@ -193,17 +197,9 @@
           ></textarea>
         </div>
 
-        <!-- Submit states -->
         <button type="submit" class="btn btn-primary" id="pledgeSubmitBtn" style="width:100%;justify-content:center;">
           Submit My Pledge 🌿
         </button>
-
-        <!-- Success message (shown after redirect, or via JS) -->
-        <div id="pledgeSuccess" style="display:none;background:var(--green-pale);border:1.5px solid var(--green-mint);border-radius:var(--radius-md);padding:1.25rem;text-align:center;margin-top:1rem;">
-          <div style="font-size:1.75rem;margin-bottom:.5rem;">🎉</div>
-          <strong style="color:var(--green-dark);">Thank you for your pledge!</strong>
-          <p style="font-size:.88rem;color:var(--gray-600);margin-top:.35rem;">You are now part of the WildGuard Malaysia conservation community.</p>
-        </div>
 
       </form>
     </div>
@@ -248,7 +244,7 @@
 <script src="js/components.js"></script>
 <script src="js/main.js"></script>
 <script>
-  // ── PLEDGE OPTION SELECTION ───────────────────────────────────────────────
+  // ── PLEDGE OPTION CLICK ───────────────────────────────────────────────────
   document.querySelectorAll('.pledge-opt').forEach(opt => {
     opt.addEventListener('click', () => {
       document.querySelectorAll('.pledge-opt').forEach(o => o.classList.remove('active'));
@@ -258,79 +254,18 @@
     });
   });
 
-  // ── FORMSPREE SUBMIT (JSON method — more reliable) ────────────────────────
-  document.getElementById('pledgeForm')?.addEventListener('submit', async function(e) {
-    e.preventDefault();
-
-    // Read field values explicitly by ID
-    const name         = document.getElementById('pledge_name').value.trim();
-    const email        = document.getElementById('pledge_email').value.trim();
-    const message      = document.getElementById('pledge_message').value.trim();
-    const pledgeChoice = document.getElementById('pledgeHidden').value;
-
-    // Validate name
-    if (!name) {
-      document.getElementById('pledge_name').focus();
-      return;
-    }
-    // Validate email
-    if (!email) {
-      document.getElementById('pledge_email').focus();
-      return;
-    }
-    // Validate pledge option selected
-    if (!pledgeChoice) {
+  // ── VALIDATE PLEDGE BEFORE NATIVE FORM SUBMIT ─────────────────────────────
+  document.getElementById('pledgeForm')?.addEventListener('submit', function(e) {
+    const pledge = document.getElementById('pledgeHidden').value;
+    if (!pledge || pledge === 'Not selected') {
+      e.preventDefault();
       document.getElementById('pledgeError').style.display = 'block';
       document.getElementById('pledgeError').scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
-
-    const btn = document.getElementById('pledgeSubmitBtn');
-    btn.textContent = 'Sending... ⏳';
-    btn.disabled = true;
-
-    // Build JSON payload — Formspree accepts application/json
-    const payload = {
-      name:          name,
-      email:         email,
-      pledge_choice: pledgeChoice,
-      message:       message || '(No additional message)',
-      _subject:      '🌿 New WildGuard Malaysia Pledge!'
-    };
-
-    try {
-      const response = await fetch(this.action, {
-        method:  'POST',
-        body:    JSON.stringify(payload),
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept':       'application/json'
-        }
-      });
-
-      if (response.ok) {
-        // Show success message
-        document.getElementById('pledgeSuccess').style.display = 'block';
-        btn.style.display = 'none';
-        // Clear all fields
-        document.getElementById('pledge_name').value    = '';
-        document.getElementById('pledge_email').value   = '';
-        document.getElementById('pledge_message').value = '';
-        document.getElementById('pledgeHidden').value   = '';
-        document.querySelectorAll('.pledge-opt').forEach(o => o.classList.remove('active'));
-        // Scroll to success
-        document.getElementById('pledgeSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
-      } else {
-        const data = await response.json().catch(() => ({}));
-        btn.textContent = 'Submit My Pledge 🌿';
-        btn.disabled    = false;
-        alert(data?.errors?.[0]?.message || 'Something went wrong. Please try again.');
-      }
-    } catch (err) {
-      btn.textContent = 'Submit My Pledge 🌿';
-      btn.disabled    = false;
-      alert('Network error. Please check your connection and try again.');
-    }
+    // All good — let the browser POST naturally to Formspree
+    document.getElementById('pledgeSubmitBtn').textContent = 'Sending... ⏳';
+    document.getElementById('pledgeSubmitBtn').disabled = true;
   });
 
   function share(platform) {
