@@ -82,12 +82,7 @@ function showToast(msg) {
 }
 
 // ── PLEDGE FORM SUBMIT ────────────────────────────────────────────────────
-document.querySelector('.pledge-form')?.addEventListener('submit', (e) => {
-  e.preventDefault();
-  showToast('🌿 Thank you! Your pledge has been recorded.');
-  e.target.reset();
-  document.querySelectorAll('.pledge-opt').forEach(o => o.classList.remove('active'));
-});
+// Handled directly in get-involved.html — form POSTs natively to Formspree.
 
 // ── COUNTER ANIMATION ─────────────────────────────────────────────────────
 function animateCounters() {
